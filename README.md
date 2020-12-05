@@ -1,0 +1,2 @@
+# primex
+Prime Number Finder
