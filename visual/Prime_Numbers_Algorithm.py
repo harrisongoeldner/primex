@@ -34,8 +34,8 @@ def isPrime(n) :
 window = tk.Tk()
 window.title("primex")
 window.geometry("300x100") # might be changed
-#scroll = tk.Scrollbar(window)
-#scroll.pack(side=tk.RIGHT)
+scroll = tk.Scrollbar(window)
+scroll.grid(column=1,row=2)
 
 """listbox_tk = Listbox(window, yscrollcommand=scroll.set)
 for i in range(100):
