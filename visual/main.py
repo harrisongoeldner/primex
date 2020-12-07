@@ -5,6 +5,7 @@ The purpose of the program is to calculate all prime numbers between a certain r
 
 # import
 from gui import *
+from run import *
 
 # set up window
 """window = tk.Tk()
@@ -13,7 +14,7 @@ window.geometry("250x300") # might be changed
 #scroll = tk.Scrollbar(window)
 #scroll.grid(column=1,row=2)"""
 
-"""listbox_tk = Listbox(window, yscrollcommand=scroll.set)
+"""listbox_tk = Listbox(window, yscrollcommand=scroll.set)s
 for i in range(100):
     listbox_tk.insert(END, str(i))
 listbox_tk.pack(side=LEFT, fill=BOTH)
@@ -36,7 +37,8 @@ Developed by Harrison Goeldner
 """)
     win.setup()
     win.input()
-    print(win.calculate())
+    win.git_button()
+    win.printx()
     win.done()
 
 

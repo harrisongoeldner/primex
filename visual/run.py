@@ -1,13 +1,13 @@
 import sys
+from gui import *
+from algorithm import *
 
-def run(num,num1,event):
-    num = num
-    num1 = num1
-    print(num)
-    print(num1)
-    #   num = int(input("bottom value: "))
-    #   num1 = int(input("top value: "))
-    """diff = num1 - num
+
+def run(num,num1):
+    num = int(num)
+    num1 = int(num1)
+
+    diff = num1 - num
     list = []
 
     # Create txt file to store data
@@ -25,8 +25,9 @@ def run(num,num1,event):
             print(str(num) + ' null-'.rjust(20,'-'), end = '')
         print(percent.rjust(20,'-')+'%')
         num = num + 1
+        return percent
         
     print(list)
     print('collected '+str(len(list))+' prime numbers')
     f.write(str(list)+'\n\ncollected '+str(len(list))+' prime numbers')
-    f.close() """
+    f.close()

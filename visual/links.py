@@ -1,5 +1,5 @@
 import webbrowser
 
 class bookmarks:
-    def github(self):
+    def github():
         webbrowser.open_new_tab('https://github.com/harrisongoeldner/primex')

@@ -17,9 +17,8 @@ class window:
         self.code.grid(column=0, row=0)
     def git_button(self):
         # github button
-        self.button_name = tk.Button(self.window, text = "Github")
+        self.button_name = tk.Button(self.window, text = "Github", command=bookmarks.github)
         self.button_name.grid(column=0,row=5)
-        self.button_name.bind("<Button-1>",bookmarks.github)
     def done(self):
         self.window.mainloop()
     def input(self):
@@ -27,8 +26,14 @@ class window:
         self.entry1.grid(column=0,row=1)
         self.entry2 = tk.Entry(self.window, width=25)
         self.entry2.grid(column=0,row=2)
-    def calculate(self):
-        runtime = partial(run,self.entry1,self.entry2)
-        button_name1 = tk.Button(self.window, text = "calculate")
+        button_name1 = tk.Button(self.window, text = "Calculate",command=lambda:run(self.entry1.get(),self.entry2.get()))
         button_name1.grid(column=0,row=3)
-        button_name1.bind("<Button-1>",runtime)
+    def printx(self):
+        """bloop = tk.Text(self.window,height=20,width=10)
+        bloop.grid(column=1,row=6)
+        try:
+            bloop.insert(tk.END,value)
+        except Exception:
+            print("error")"""
+        label1=tk.Label(text=percent)
+        label1.grid(column=0,row=7)
