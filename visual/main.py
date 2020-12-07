@@ -1,41 +1,19 @@
-# A optimized school method based  
-# Python3 program to check 
-# if a number is prime 
+"""
+Primex is open source and currently maintained by Harrison Goeldner
+The purpose of the program is to calculate all prime numbers between a certain range and saved to a txt file
+"""
 
+# import
 import sys
-import tkinter as tk
-import webbrowser
-
-def github(event):
-    webbrowser.open_new_tab('https://github.com/harrisongoeldner/primex')
-
-def isPrime(n) : 
-  
-    # Corner cases 
-    if (n <= 1) : 
-        return False
-    if (n <= 3) : 
-        return True
-  
-    # This is checked so that we can skip  
-    # middle five numbers in below loop 
-    if (n % 2 == 0 or n % 3 == 0) : 
-        return False
-  
-    i = 5
-    while(i * i <= n) : 
-        if (n % i == 0 or n % (i + 2) == 0) : 
-            return False
-        i = i + 6
-  
-    return True
+from gui import *
+from algorithm import *
 
 # set up window
-window = tk.Tk()
+"""window = tk.Tk()
 window.title("primex")
 window.geometry("250x300") # might be changed
 #scroll = tk.Scrollbar(window)
-#scroll.grid(column=1,row=2)
+#scroll.grid(column=1,row=2)"""
 
 """listbox_tk = Listbox(window, yscrollcommand=scroll.set)
 for i in range(100):
@@ -43,16 +21,6 @@ for i in range(100):
 listbox_tk.pack(side=LEFT, fill=BOTH)
 scroll.config(command=listbox_tk.yview)
 """
-
-#label
-label_name = tk.Label(text = """
--- Prime Number Algorithm --
-Version... 1.1.3
-Release Date... April 28, 2020
-Source code by Nikita Tiwari
-Developed by Harrison Goeldner
-""")
-label_name.grid(column=0,row=0)
 
 # github button
 button_name = tk.Button(window, text = "Github")
