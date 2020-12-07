@@ -1,5 +1,5 @@
-import webbrowser
 import tkinter as tk
+from links import *
 
 class window:
     def __init__(self, name, size, intro):
@@ -13,14 +13,13 @@ class window:
         self.window.geometry(str(self.size))
         self.code = tk.Label(text = self.intro)
         self.code.grid(column=0, row=0)
-    def github(self):
-        webbrowser.open_new_tab('https://github.com/harrisongoeldner/primex')
 #    def input()
     def git_button(self):
         # github button
         self.button_name = tk.Button(self.window, text = "Github")
         self.button_name.grid(column=0,row=5)
-        self.button_name.bind("<Button-1>",github)
+        self.link = links()
+        self.button_name.bind("<Button-1>",self.link.github())
     def done(self):
         self.window.mainloop()
         
