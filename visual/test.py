@@ -11,4 +11,6 @@ Developed by Harrison Goeldner
 """)
 git.setup()
 git.git_button()
+git.input()
+git.calculate()
 git.done()

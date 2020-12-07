@@ -22,3 +22,6 @@ def isPrime(n) :
         i = i + 6
   
     return True
+
+# This code is contributed  
+# by Nikita Tiwari.
