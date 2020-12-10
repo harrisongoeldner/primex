@@ -1,28 +1,29 @@
-# A optimized school method based  
-# Python3 program to check 
-# if a number is prime 
+# A optimized school method based
+# Python3 program to check
+# if a number is prime
 
-#import sys  
-  
-def isPrime(n) : 
-  
-    # Corner cases 
-    if (n <= 1) : 
+#import sys
+import csv
+
+def isPrime(n) :
+
+    # Corner cases
+    if (n <= 1) :
         return False
-    if (n <= 3) : 
+    if (n <= 3) :
         return True
-  
-    # This is checked so that we can skip  
-    # middle five numbers in below loop 
-    if (n % 2 == 0 or n % 3 == 0) : 
+
+    # This is checked so that we can skip
+    # middle five numbers in below loop
+    if (n % 2 == 0 or n % 3 == 0) :
         return False
-  
+
     i = 5
-    while(i * i <= n) : 
-        if (n % i == 0 or n % (i + 2) == 0) : 
+    while(i * i <= n) :
+        if (n % i == 0 or n % (i + 2) == 0) :
             return False
         i = i + 6
-  
+
     return True
 
 print("""
@@ -53,14 +54,18 @@ for x in range(num,num1):
         print(str(num) + ' null-'.rjust(20,'-'), end = '')
     print(percent.rjust(20,'-')+'%')
     num = num + 1
-      
+
 print(list)
 print('collected '+str(len(list))+' prime numbers')
 f.write(str(list)+'\n\ncollected '+str(len(list))+' prime numbers')
-f.close() 
+f.close()
+
+with open() ('prime', mode='w') as primes:
+    writer = csv.writer(primes)
+    writer.writerows(list)
 
 # Coded by Harrison Goeldner
-# This code is contributed  
+# This code is contributed
 # by Nikita Tiwari.
 
 
