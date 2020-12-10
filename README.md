@@ -12,7 +12,7 @@ Requires Python 3 to run\
 
 Requires Dropbox python package to be installed:
 
-> (Dropbox SDK)[https://www.dropbox.com/developers/documentation/python]
+*(Dropbox SDK)[https://www.dropbox.com/developers/documentation/python]*
 
 ## Usage
 File can be run from terminal typing `python` or `python3` depending on your system configuration
