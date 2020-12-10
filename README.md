@@ -10,7 +10,7 @@ Version 1.0.0 alpha (undeveloped)
 Tested on MacOS Big Sur (11.0.1)\
 Requires Python 3 to run\
 
-Requires Dropbox python package to be installed:[Dropbox SDK](https://www.dropbox.com/developers/documentation/python)
+Requires Dropbox python package to be installed: [Dropbox SDK](https://www.dropbox.com/developers/documentation/python)
 
 This can be done by running the following code:
 
