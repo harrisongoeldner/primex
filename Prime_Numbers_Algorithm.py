@@ -4,6 +4,24 @@
 
 #import csv
 import csv
+try:
+    import dropbox
+    from dropbox.files import WriteMode
+    from dropbox.exceptions import ApiError, AuthError
+    from config import *   
+except:
+    print("Unable to import dropbox")
+
+class data:
+    def __init__(self,access_token):
+        try:
+            self.access_token = access_token
+        except:
+            print("Unable to import access token")
+    def upload(self,LOCALFILE,BACKUPPATH):
+        dxb.files_upload(f.read(),BACKUPPATH)
+        
+
 
 # prime number test
 def isPrime(n) :
