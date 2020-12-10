@@ -41,26 +41,30 @@ list = []
 
 # Create txt file to store data
 t = 1 # used to name file -- could be used in future in a loop
-f= open("prime"+str(num)+'-'+str(num1)+ ".txt","w+")
-
+#f= open("prime"+str(num)+'-'+str(num1)+ ".txt","w+")
+i = 0
 # Runs function
 for x in range(num,num1):
+    list.append([])
+    list[i].append(num)
     percent = str(round(x/diff*100,1))
     if(isPrime(num)):
-        list.append(num)
+        list[i].append("prime")
         print(str(num) + ' prime'.rjust(20,'-'), end = '')
         #alt could use sys.stdout.write()
     else:
         print(str(num) + ' null-'.rjust(20,'-'), end = '')
+        list[i].append("null")
     print(percent.rjust(20,'-')+'%')
     num = num + 1
+    i = i + 1
 
 print(list)
 print('collected '+str(len(list))+' prime numbers')
-f.write(str(list)+'\n\ncollected '+str(len(list))+' prime numbers')
-f.close()
+#f.write(str(list)+'\n\ncollected '+str(len(list))+' prime numbers')
+#f.close()
 
-with open() ('prime', mode='w') as primes:
+with open('prime.csv', mode='w') as primes:
     writer = csv.writer(primes)
     writer.writerows(list)
 
