@@ -2,9 +2,11 @@
 #CLOUDFILE = '/primes.csv'
 
 #!/usr/bin/env python3
-
-import dropbox
-from dropbox import DropboxOAuth2FlowNoRedirect
+try:
+    import dropbox
+    from dropbox import DropboxOAuth2FlowNoRedirect
+except:
+    pass
 
 class data_transfer:
     def __init__(self,oauth_result):

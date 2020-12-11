@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-
-import dropbox
-from dropbox import DropboxOAuth2FlowNoRedirect
+try:
+    import dropbox
+    from dropbox import DropboxOAuth2FlowNoRedirect
+except:
+    pass
 
 '''
 This example walks through a basic oauth flow using the existing long-lived token type
