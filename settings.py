@@ -1,2 +1,2 @@
 first_load = True
-upload = True
+upload = False

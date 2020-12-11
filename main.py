@@ -86,45 +86,46 @@ def main():
         writer.writerows(list)
     sys.stdout.write("Done\n")
 
-    sys.stdout.write("Initializing dropbox upload... \n")
-    sys.stdout.write("Go to https://www.dropbox.com to see more information\n")
+    if settings.upload == True:
+        sys.stdout.write("Initializing dropbox upload... \n")
+        sys.stdout.write("Go to https://www.dropbox.com to see more information\n")
 
-    import config
-    try:
-        dat = data_transfer(config.oauth_result)
-        dat.upload("output/"+file_name,"/output/"+file_name)
-        sys.stdout.write("OAUTH CONNECTED SUCCESSFULLY\n")
-        sys.stdout.write(file_name + " has been uploaded to dropbox\n")
+        import config
+        try:
+            dat = data_transfer(config.oauth_result)
+            dat.upload("output/"+file_name,"/output/"+file_name)
+            sys.stdout.write("OAUTH CONNECTED SUCCESSFULLY\n")
+            sys.stdout.write(file_name + " has been uploaded to dropbox\n")
 
-    except dropbox.exceptions.BadInputError:
-        print("WARNING: Don't have write permission")
-        input("Change permission and click ENTER to fix")
-        oauth_init(config.APP_KEY, config.APP_SECRET)
-        importlib.reload(config)
-        dat = data_transfer(config.oauth_result)
-        sys.stdout.write("OAUTH CONNECTED SUCCESSFULLY\n")
-        dat.upload("output/"+file_name,"/output/"+file_name)
-        sys.stdout.write(file_name + " has been uploaded to dropbox\n")
+        except dropbox.exceptions.BadInputError:
+            print("WARNING: Don't have write permission")
+            input("Change permission and click ENTER to fix")
+            oauth_init(config.APP_KEY, config.APP_SECRET)
+            importlib.reload(config)
+            dat = data_transfer(config.oauth_result)
+            sys.stdout.write("OAUTH CONNECTED SUCCESSFULLY\n")
+            dat.upload("output/"+file_name,"/output/"+file_name)
+            sys.stdout.write(file_name + " has been uploaded to dropbox\n")
 
-    except ApiError as err:
-        # This checks for the specific error where a user doesn't have
-        # enough Dropbox space quota to upload this file
-        if (err.error.is_path() and
-                err.error.get_path().reason.is_insufficient_space()):
-            sys.exit("ERROR: Cannot back up; insufficient space.")
-        elif err.user_message_text:
-            print(err.user_message_text)
-            sys.exit()
-        else:
-            print(err)
-            sys.exit()
+        except ApiError as err:
+            # This checks for the specific error where a user doesn't have
+            # enough Dropbox space quota to upload this file
+            if (err.error.is_path() and
+                    err.error.get_path().reason.is_insufficient_space()):
+                sys.exit("ERROR: Cannot back up; insufficient space.")
+            elif err.user_message_text:
+                print(err.user_message_text)
+                sys.exit()
+            else:
+                print(err)
+                sys.exit()
 
-    except:
-        oauth_init(config.APP_KEY, config.APP_SECRET)
-        importlib.reload(config)
-        dat = data_transfer(config.oauth_result)
-        dat.upload("output/"+file_name,"/output/"+file_name)
-        sys.stdout.write(file_name + " has been uploaded to dropbox\n")
+        except:
+            oauth_init(config.APP_KEY, config.APP_SECRET)
+            importlib.reload(config)
+            dat = data_transfer(config.oauth_result)
+            dat.upload("output/"+file_name,"/output/"+file_name)
+            sys.stdout.write(file_name + " has been uploaded to dropbox\n")
 
 if __name__ == "__main__":
     main()
