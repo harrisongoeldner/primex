@@ -20,7 +20,7 @@ if settings.upload == True:
 
         data[1] = 'upload = \'False\'\n'
 
-        with open("config.py","w") as f:
+        with open("settings.py","w") as f:
             f.writelines(data)
             f.close()
         importlib.reload(settings)
