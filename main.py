@@ -2,51 +2,30 @@
 # Python3 program to check
 # if a number is prime
 
-#import csv
+# import python libraries
 import csv
+import importlib
+# import file classes and definitions
+from dbx import *
+from prime import isPrime
+from oauth import oauth_init
 try:
-    import dropbox
-    from dropbox.files import WriteMode
-    from dropbox.exceptions import ApiError, AuthError
-    from config import *   
+    from config import *
 except:
-    print("Unable to import dropbox")
+    print("error importing")
 
-class data:
-    def __init__(self,access_token):
-        try:
-            self.access_token = access_token
-        except:
-            print("Unable to import access token")
-    def upload(self,LOCALFILE,BACKUPPATH):
-        dxb.files_upload(f.read(),BACKUPPATH)
-        
-
-
-# prime number test
-def isPrime(n) :
-
-    # Corner cases
-    if (n <= 1) :
-        return False
-    if (n <= 3) :
-        return True
-
-    # This is checked so that we can skip
-    # middle five numbers in below loop
-    if (n % 2 == 0 or n % 3 == 0) :
-        return False
-
-    i = 5
-    while(i * i <= n) :
-        if (n % i == 0 or n % (i + 2) == 0) :
-            return False
-        i = i + 6
-
-    return True
+data = ["TOKEN = ''\n","APP_KEY = ''\n","APP_SECRET = ''\n","oauth_result =  ''\n"]
+try:
+    file = open("config.py")
+    file.close()
+except IOError:
+    file = open("config.py","w")
+    data[1] = "APP_KEY = '" + input("Enter APP_KEY: ") + "'\n"
+    data[2] = "APP_SECRET = '" + input("Enter APP_SECRET: ") + "'\n"
+    file.writelines(data)
+    file.close()
 
 # important information
-
 print("""
 -- Prime Number Algorithm --
 Version... 1.1.3
@@ -91,10 +70,23 @@ print('collected '+str(len(list))+' prime numbers')
 #f.write(str(list)+'\n\ncollected '+str(len(list))+' prime numbers')
 #f.close()
 
+file_name = "prime"+str(num)+'-'+str(num1)+ ".csv"
 # csv output
-with open('prime.csv', mode='w') as primes:
+with open("output/"+file_name, mode='w') as primes:
     writer = csv.writer(primes)
     writer.writerows(list)
+
+from config import *
+print(oauth_result)
+
+dat = data_transfer(oauth_result)
+dat.upload("output/"+file_name,file_name)
+#except:
+ #   oauth_init(APP_KEY, APP_SECRET)
+  #  dat = data_transfer(oauth_result)
+   # dat.upload("output/"+file_name,file_name)
+
+
 
 # Coded by Harrison Goeldner
 # This code is contributed
