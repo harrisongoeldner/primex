@@ -1,55 +1,48 @@
-# A optimized school method based
-# Python3 program to check
-# if a number is prime
-
+print("Initializing imports... ", end="")
 # import python libraries
-import csv
-import importlib
-# import file classes and definitions
-from dbx import *
-import settings
+import csv, importlib, sys
+
+import info, settings
+from dbx import data_transfer
 from prime import isPrime
 from oauth import oauth_init
+
+import dropbox
 from dropbox.files import WriteMode
 from dropbox.exceptions import ApiError, AuthError
-try:
-    import config
-except:
-    print("error importing")
+from dropbox import DropboxOAuth2FlowNoRedirect
+sys.stdout.write("Done\n")
 
-data = ["TOKEN = ''\n","APP_KEY = ''\n","APP_SECRET = ''\n","oauth_result =  ''\n"]
-try:
-    file = open("config.py")
-    file.close()
-except IOError:
-    file = open("config.py","w")
-    data[1] = "APP_KEY = '" + input("Enter APP_KEY: ") + "'\n"
-    data[2] = "APP_SECRET = '" + input("Enter APP_SECRET: ") + "'\n"
-    file.writelines(data)
-    file.close()
+sys.stdout.write("Initializing functions... ")
 
-# important information
-print("""
--- Prime Number Algorithm --
-Version... 1.1.3
-Release Date... April 28, 2020
-Source code by Nikita Tiwari
-Developed by Harrison Goeldner
-""")
+# functions
+def config_file_test():
+    config_file = ["TOKEN = ''\n","APP_KEY = ''\n","APP_SECRET = ''\n","oauth_result =  ''\n"]
+    try:
+        file = open("config.py")
+        file.close()
+        sys.stdout.write("Success\n")
+    except IOError:
+        sys.stdout.write("Not Found\n")
+        print("Go to https://www.dropbox.com/developers/apps and get App Key and Secret")
+        file = open("config.py","w")
+        config_file[1] = "APP_KEY = '" + input("Enter APP_KEY: ") + "'\n"
+        config_file[2] = "APP_SECRET = '" + input("Enter APP_SECRET: ") + "'\n"
+        file.writelines(config_file)
+        file.close()
+
+sys.stdout.write("Done\n")
+
+sys.stdout.write("Searching for config.py file... ")
+config_file_test()
+info.title()
 
 # variable assignment
-num = int(input("bottom value: "))
-num1 = int(input("top value: "))
+num = int(input("Bottom value: "))
+num1 = int(input("Top value: "))
 diff = num1 - num
 list = []
-
-# Create txt file to store data
-#t = 1 # used to name file -- could be used in future in a loop
-#f= open("prime"+str(num)+'-'+str(num1)+ ".txt","w+")
-
-# csv row value in loop
-i = 0
-
+i = 0 # csv row value in loop
 file_name = "prime"+str(num)+'-'+str(num1)+ ".csv"
 
 # Runs function
@@ -71,30 +64,33 @@ for x in range(num,num1):
 print(list)
 print('collected '+str(len(list))+' prime numbers')
 
-# removed txt output
-#f.write(str(list)+'\n\ncollected '+str(len(list))+' prime numbers')
-#f.close()
+sys.stdout.write("Initializing file write... ")
 # csv output
 with open("output/"+file_name, mode='w') as primes:
     writer = csv.writer(primes)
     writer.writerows(list)
+sys.stdout.write("Done\n")
+
+sys.stdout.write("Initializing dropbox upload... \n")
+sys.stdout.write("Go to https://www.dropbox.com to see more information\n")
 
 import config
 try:
     dat = data_transfer(config.oauth_result)
     dat.upload("output/"+file_name,"/output/"+file_name)
+    sys.stdout.write("OAUTH CONNECTED SUCCESSFULLY\n")
+    sys.stdout.write(file_name + " has been uploaded to dropbox\n")
+
 except dropbox.exceptions.BadInputError:
     print("WARNING: Don't have write permission")
     input("Change permission and click ENTER to fix")
     oauth_init(config.APP_KEY, config.APP_SECRET)
     importlib.reload(config)
     dat = data_transfer(config.oauth_result)
+    sys.stdout.write("OAUTH CONNECTED SUCCESSFULLY\n")
     dat.upload("output/"+file_name,"/output/"+file_name)
-except AuthError:
-    oauth_init(config.APP_KEY, config.APP_SECRET)
-    importlib.reload(config)
-    dat = data_transfer(config.oauth_result)
-    dat.upload("output/"+file_name,"/output/"+file_name)
+    sys.stdout.write(file_name + " has been uploaded to dropbox\n")
+
 except ApiError as err:
     # This checks for the specific error where a user doesn't have
     # enough Dropbox space quota to upload this file
@@ -108,16 +104,23 @@ except ApiError as err:
         print(err)
         sys.exit()
 
-
-# Coded by Harrison Goeldner
-# This code is contributed
-# by Nikita Tiwari.
-
+except:
+    oauth_init(config.APP_KEY, config.APP_SECRET)
+    importlib.reload(config)
+    dat = data_transfer(config.oauth_result)
+    dat.upload("output/"+file_name,"/output/"+file_name)
+    sys.stdout.write(file_name + " has been uploaded to dropbox\n")
 
 """
+Coded by Harrison Goeldner
+Prime number algorithm developed by by Nikita Tiwari.
+Dropbox supported sections of API references
+
+
 -- UPDATE LOG --
+10 DECEMBER 2020    2.0.0 add dropbox support
 08 DECEMBER 2020    1.1.4 add csv support
 22 APRIL 2020    1.1.3 add custom file name
-18 APRIL 2020    1.1.2 add oercent and improved interface
+18 APRIL 2020    1.1.2 add percent and improved interface
 00 UNKNOWN 0000   1.1.1 original version
 """
