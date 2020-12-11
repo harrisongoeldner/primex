@@ -7,10 +7,13 @@ import csv
 import importlib
 # import file classes and definitions
 from dbx import *
+import settings
 from prime import isPrime
 from oauth import oauth_init
+from dropbox.files import WriteMode
+from dropbox.exceptions import ApiError, AuthError
 try:
-    from config import *
+    import config
 except:
     print("error importing")
 
@@ -47,6 +50,8 @@ list = []
 # csv row value in loop
 i = 0
 
+file_name = "prime"+str(num)+'-'+str(num1)+ ".csv"
+
 # Runs function
 for x in range(num,num1):
     list.append([]) # create new nested list
@@ -69,23 +74,39 @@ print('collected '+str(len(list))+' prime numbers')
 # removed txt output
 #f.write(str(list)+'\n\ncollected '+str(len(list))+' prime numbers')
 #f.close()
-
-file_name = "prime"+str(num)+'-'+str(num1)+ ".csv"
 # csv output
 with open("output/"+file_name, mode='w') as primes:
     writer = csv.writer(primes)
     writer.writerows(list)
 
-from config import *
-print(oauth_result)
-
-dat = data_transfer(oauth_result)
-dat.upload("output/"+file_name,file_name)
-#except:
- #   oauth_init(APP_KEY, APP_SECRET)
-  #  dat = data_transfer(oauth_result)
-   # dat.upload("output/"+file_name,file_name)
-
+import config
+try:
+    dat = data_transfer(config.oauth_result)
+    dat.upload("output/"+file_name,"/output/"+file_name)
+except dropbox.exceptions.BadInputError:
+    print("WARNING: Don't have write permission")
+    input("Change permission and click ENTER to fix")
+    oauth_init(config.APP_KEY, config.APP_SECRET)
+    importlib.reload(config)
+    dat = data_transfer(config.oauth_result)
+    dat.upload("output/"+file_name,"/output/"+file_name)
+except AuthError:
+    oauth_init(config.APP_KEY, config.APP_SECRET)
+    importlib.reload(config)
+    dat = data_transfer(config.oauth_result)
+    dat.upload("output/"+file_name,"/output/"+file_name)
+except ApiError as err:
+    # This checks for the specific error where a user doesn't have
+    # enough Dropbox space quota to upload this file
+    if (err.error.is_path() and
+            err.error.get_path().reason.is_insufficient_space()):
+        sys.exit("ERROR: Cannot back up; insufficient space.")
+    elif err.user_message_text:
+        print(err.user_message_text)
+        sys.exit()
+    else:
+        print(err)
+        sys.exit()
 
 
 # Coded by Harrison Goeldner
