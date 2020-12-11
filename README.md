@@ -17,3 +17,4 @@ File can be run from terminal typing `python` or `python3` depending on your sys
 > repository was destroyed due to hidden credentials and has been restored from backup
 
 ## Installation
+### Downloading the Repository
