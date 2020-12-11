@@ -48,8 +48,10 @@ def config_file_test():
 sys.stdout.write("Done\n")
 
 def main():
-    sys.stdout.write("Searching for config.py file... ")
-    config_file_test()
+    if settings.upload == True:
+        sys.stdout.write("Searching for config.py file... ")
+        config_file_test()
+    
     info.title()
 
     # variable assignment
