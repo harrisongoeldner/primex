@@ -1,6 +1,7 @@
 theme: jekyll-theme-architect
-show_downloads: true
 
 ---
 permalink: /404.html
 ---
+
+show_downloads: true
