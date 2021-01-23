@@ -28,8 +28,9 @@ git clone https://github.com/harrisongoeldner/primex.git
 This project makes use of Dropbox's API. The program can be run without the API being installed however the upload feature will not work. For more information on Dropbox's API for python go to: https://www.dropbox.com/developers/documentation/python
 
 Install Dropbox's API with:
-> pip install dropbox
-
+```
+pip install dropbox
+```
 Note: some systems use `pip3` instead of `pip`
 
 ### Configuring Dropbox Online
