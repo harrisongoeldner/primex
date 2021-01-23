@@ -17,13 +17,13 @@ File can be run from terminal typing `python` or `python3` depending on your sys
 ## Installation
 ### Downloading the Repository
 Download the project files using:
-
-> wget https://github.com/harrisongoeldner/primex/archive/php-bridge-server.zip
-
+```
+wget https://github.com/harrisongoeldner/primex/archive/php-bridge-server.zip
+```
 The repository can also be downloaded with:
-
-> git clone https://github.com/harrisongoeldner/primex.git
-
+```
+git clone https://github.com/harrisongoeldner/primex.git
+```
 ### Setting up Dropbox on Device
 This project makes use of Dropbox's API. The program can be run without the API being installed however the upload feature will not work. For more information on Dropbox's API for python go to: https://www.dropbox.com/developers/documentation/python
 
