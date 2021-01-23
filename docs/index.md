@@ -1,12 +1,8 @@
-## Welcome to GitHub Pages
+## Welcome to Primex
 
-You can use the [editor on GitHub](https://github.com/harrisongoeldner/primex/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+Primex is designed to simplify prime number calculation by automatically optimizing for the current computer and uploading to Dropbox.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Features
 
 ```markdown
 Syntax highlighted code block
