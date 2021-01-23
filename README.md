@@ -14,9 +14,6 @@ Requires Python 3 to run
 ## Usage
 File can be run from terminal typing `python` or `python3` depending on your system configuration
 
-## Developer Note `DEC 10, 2020`
-> repository was destroyed due to hidden credentials and has been restored from backup
-
 ## Installation
 ### Downloading the Repository
 Download the project files using:
