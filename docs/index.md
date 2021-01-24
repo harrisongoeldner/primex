@@ -5,8 +5,11 @@ Primex is designed to simplify prime number calculation by automatically optimiz
 ### Features
 
 ✅ Prime number finder
+
 ❌ System optimizer
+
 ✅ CSV Support
+
 ✅ Dropbox Support
 
 ### Support or Contact
