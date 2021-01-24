@@ -1,10 +1,8 @@
----
-layout: default
----
-
 ## Welcome to Primex
 
 Primex is designed to simplify prime number calculation by automatically optimizing for the current computer and uploading to Dropbox.
+
+This site is still being developed!
 
 ### Features
 
