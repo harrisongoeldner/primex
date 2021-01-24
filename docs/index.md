@@ -3,7 +3,7 @@
 Primex is designed to simplify prime number calculation by automatically optimizing for the current computer and uploading to Dropbox.
 
 ### Features
-
+```
 ✅ Prime number finder
 
 ❌ System optimizer
@@ -11,7 +11,7 @@ Primex is designed to simplify prime number calculation by automatically optimiz
 ✅ CSV Support
 
 ✅ Dropbox Support
-
+```
 ### Wiki
 
 Checkout our [Wiki](https://github.com/harrisongoeldner/primex/wiki)!
