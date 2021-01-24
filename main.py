@@ -139,6 +139,7 @@ Dropbox supported sections of API references
 
 
 -- UPDATE LOG --
+23 JANUARY 2020     2.0.1 fix problemic info variable
 10 DECEMBER 2020    2.0.0 add dropbox support
 08 DECEMBER 2020    1.1.4 add csv support
 22 APRIL 2020    1.1.3 add custom file name
