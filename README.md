@@ -5,7 +5,7 @@ Two modes available:
 1. Uses bottom and top value to calculate all prime numbers in between and outputs to csv file using python
 2. Continuously calculates prime numbers of increasing magnitude with start stop functionality
 
-Version 1.0.0 alpha (undeveloped)
+Current version: v2.0.0
 
 ## Compatibility
 Tested on MacOS Big Sur (11.0.1)\
