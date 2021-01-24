@@ -14,7 +14,7 @@ Primex is designed to simplify prime number calculation by automatically optimiz
 ```
 ### Wiki
 
-Checkout our [Wiki](https://github.com/harrisongoeldner/primex/wiki)!
+Checkout our [Wiki](https://github.com/harrisongoeldner/primex/wiki) for more information!
 
 ### Support or Contact
 
