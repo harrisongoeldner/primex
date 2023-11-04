@@ -1,6 +1,6 @@
 # primex
 
-Prime Number Finder Server Edition
+Prime Number Finder
 Two modes available:
 1. Uses bottom and top value to calculate all prime numbers in between and outputs to csv file using python
 2. Continuously calculates prime numbers of increasing magnitude with start stop functionality
