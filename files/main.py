@@ -14,7 +14,7 @@ if settings.upload == True:
         from dropbox.exceptions import ApiError, AuthError
         from dropbox import DropboxOAuth2FlowNoRedirect
     except: # If fails, continue without dropbox 
-        if(input("Dropbox module not installed. Would you like to install it? (y/n)" == 'y')):
+        if(input("Dropbox module not installed. Would you like to install it? (y/n)") == 'y'):
             try:
                 os.system('pip install dropbox')
             except: 
