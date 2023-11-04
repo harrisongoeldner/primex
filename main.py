@@ -133,7 +133,7 @@ def main():
                 sys.exit()
 
         except:
-            oauth_init(config.APP_KEY, config.APP_SECRET)
+            oauth_init(config.APP_KEY, config.APP_SECRET) 
             importlib.reload(config)
             dat = data_transfer(int(config.oauth_result))
             dat.upload("output/"+file_name,"/output/"+file_name)
