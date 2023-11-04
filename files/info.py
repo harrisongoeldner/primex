@@ -1,8 +1,8 @@
 def title():
     print("""
     -- Prime Number Algorithm --
-    Version... 1.1.3
-    Release Date... April 28, 2020
+    Version... 2.0.1
+    Release Date... Nov 4, 2023
     Source code by Nikita Tiwari
     Developed by Harrison Goeldner
     """)
