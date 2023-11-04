@@ -2,34 +2,39 @@ print("Initializing imports... ", end="")
 # import python libraries
 import csv, importlib, sys
 
-import info, settings
+import info, settings, os
 from dbx import data_transfer
 from prime import isPrime
 from oauth import oauth_init
 
-if settings.upload == True:
-    try:
+if settings.upload == True: 
+    try: # Try to load dropbox
         import dropbox
         from dropbox.files import WriteMode
         from dropbox.exceptions import ApiError, AuthError
         from dropbox import DropboxOAuth2FlowNoRedirect
-    except:
-        with open("settings.py","r") as file:
-            data = file.readlines()
-            file.close()
+    except: # If fails, continue without dropbox 
+        if(input("Dropbox module not installed. Would you like to install it? (y/n)" == 'y')):
+            try:
+                os.system('pip install dropbox')
+            except: 
+                sys.stdout.write("Failed to install\n")
+        else: # Turn of dropbox mode
+            with open("settings.py","r") as file:
+                data = file.readlines()
+                file.close()
 
-        data[1] = 'upload = \'False\'\n'
+            data[1] = 'upload = \'False\'\n'
 
-        with open("settings.py","w") as f:
-            f.writelines(data)
-            f.close()
-        importlib.reload(settings)
+            with open("settings.py","w") as f:
+                f.writelines(data)
+                f.close()
+            importlib.reload(settings)
 
 sys.stdout.write("Done\n")
-
 sys.stdout.write("Initializing functions... ")
 
-# functions
+# Set up API key in config.py
 def config_file_test():
     config_file = ["TOKEN = ''\n","APP_KEY = ''\n","APP_SECRET = ''\n","oauth_result =  ''\n"]
     try:
