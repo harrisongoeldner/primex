@@ -7,13 +7,13 @@ from dbx import data_transfer
 from prime import isPrime
 from oauth import oauth_init
 
-if settings.upload == True:
-    try:
+if settings.upload == True: 
+    try: # Try to load dropbox
         import dropbox
         from dropbox.files import WriteMode
         from dropbox.exceptions import ApiError, AuthError
         from dropbox import DropboxOAuth2FlowNoRedirect
-    except:
+    except: # If fails, continue without dropbox 
         with open("settings.py","r") as file:
             data = file.readlines()
             file.close()
