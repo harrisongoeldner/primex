@@ -32,10 +32,9 @@ if settings.upload == True:
             importlib.reload(settings)
 
 sys.stdout.write("Done\n")
-
 sys.stdout.write("Initializing functions... ")
 
-# functions
+# Set up API key in config.py
 def config_file_test():
     config_file = ["TOKEN = ''\n","APP_KEY = ''\n","APP_SECRET = ''\n","oauth_result =  ''\n"]
     try:
