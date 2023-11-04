@@ -13,10 +13,27 @@ if settings.upload == True:
         from dropbox.files import WriteMode
         from dropbox.exceptions import ApiError, AuthError
         from dropbox import DropboxOAuth2FlowNoRedirect
+<<<<<<< Updated upstream:main.py
     except:
         with open("settings.py","r") as file:
             data = file.readlines()
             file.close()
+=======
+    except: # If fails, continue without dropbox 
+        if(input("Dropbox module not installed. Would you like to install it? (y/n)") == 'y'):
+            try:
+                os.system('pip3 install dropbox')
+                import dropbox
+            from dropbox.files import WriteMode
+            from dropbox.exceptions import ApiError, AuthError
+            from dropbox import DropboxOAuth2FlowNoRedirect
+            except: 
+                sys.stdout.write("Failed to install\n")
+        else: # Turn of dropbox mode
+            with open("settings.py","r") as file:
+                data = file.readlines()
+                file.close()
+>>>>>>> Stashed changes:files/main.py
 
         data[1] = 'upload = \'False\'\n'
 
@@ -125,7 +142,7 @@ def main():
         except:
             oauth_init(config.APP_KEY, config.APP_SECRET)
             importlib.reload(config)
-            dat = data_transfer(config.oauth_result)
+            dat = data_transfer(int(config.oauth_result))
             dat.upload("output/"+file_name,"/output/"+file_name)
             sys.stdout.write(file_name + " has been uploaded to dropbox\n")
 
