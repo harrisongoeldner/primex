@@ -13,12 +13,6 @@ if settings.upload == True:
         from dropbox.files import WriteMode
         from dropbox.exceptions import ApiError, AuthError
         from dropbox import DropboxOAuth2FlowNoRedirect
-<<<<<<< Updated upstream:main.py
-    except:
-        with open("settings.py","r") as file:
-            data = file.readlines()
-            file.close()
-=======
     except: # If fails, continue without dropbox 
         if(input("Dropbox module not installed. Would you like to install it? (y/n)") == 'y'):
             try:
@@ -33,7 +27,6 @@ if settings.upload == True:
             with open("settings.py","r") as file:
                 data = file.readlines()
                 file.close()
->>>>>>> Stashed changes:files/main.py
 
         data[1] = 'upload = \'False\'\n'
 
