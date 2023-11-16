@@ -17,6 +17,10 @@ if settings.upload == True:
         if(input("Dropbox module not installed. Would you like to install it? (y/n)") == 'y'):
             try:
                 os.system('pip install dropbox')
+                import dropbox
+                from dropbox.files import WriteMode
+                from dropbox.exceptions import ApiError, AuthError
+                from dropbox import DropboxOAuth2FlowNoRedirect
             except: 
                 sys.stdout.write("Failed to install\n")
         else: # Turn of dropbox mode
