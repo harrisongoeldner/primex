@@ -6,7 +6,7 @@ Primex is designed to simplify prime number calculation by automatically optimiz
 ```
 ✅ Prime number finder
 
-❌ System optimizer
+❌ Multithreading
 
 ✅ CSV Support
 
