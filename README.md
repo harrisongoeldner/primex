@@ -1,7 +1,7 @@
 # primex
 
-Prime Number Finder
-Two modes available:
+Primex outputs prime numbers to a csv which can then be uploaded to Dropbox to be stored in the cloud. Two modes are available:
+
 1. Uses bottom and top value to calculate all prime numbers in between and outputs to csv file using python
 2. Continuously calculates prime numbers of increasing magnitude with start stop functionality
 
